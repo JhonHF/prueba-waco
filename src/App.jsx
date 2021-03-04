@@ -1,10 +1,11 @@
 import React from "react";
-import { Home } from "./components/pages/home";
+import { AuthContext } from "./context/auth-context";
+import { AppRoutes } from "./routes";
 
 export const App = () => {
   return (
-    <>
-      <Home />
-    </>
+    <AuthContext>
+      <AppRoutes />
+    </AuthContext>
   );
 };
