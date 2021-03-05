@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { ProductForm } from "../../templates/product-form";
 import { useParams } from "react-router-dom";
 import { getProductsById } from "../../../services/products";
+import { NavBar } from "../../molecules/nav-bar";
+
 
 export const EditProduct = () => {
   const { id } = useParams();
@@ -17,6 +19,7 @@ export const EditProduct = () => {
   };
   return (
     <>
+    <NavBar/>
       <ProductForm id={id} initialVal={initialVal} />
     </>
   );

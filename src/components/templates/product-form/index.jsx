@@ -4,7 +4,6 @@ import { createProduct, editProduct } from "../../../services/products";
 import { useHistory } from "react-router-dom";
 
 export const ProductForm = ({ id, initialVal }) => {
-  console.log(initialVal);
   const history = useHistory();
   const handleSubmit = async (values) => {
     if (id) {
