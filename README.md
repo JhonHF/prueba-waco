@@ -7,5 +7,5 @@ La prueba consiste en un crud de productos usando firebase (hosting, firestore, 
 / - /create - /edit - /register - /login
 
 local: http://localhost:3000
-desplegado: https://pruebawaco.web.app
+desplegado: https://prueba-waco.web.app/register
 
