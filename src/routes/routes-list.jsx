@@ -1,30 +1,38 @@
 import { Home } from "../components/pages/home";
 import { Login } from "../components/pages/login";
 import { Register } from "../components/pages/register";
-
+import { AddProduct } from "../components/pages/add-product"
+import { EditProduct } from "../components/pages/edit-product"
 
 export const routes = [
   {
     strict: true,
-    path: '/',
-    component: Home,
-  },
-  {
-    strict: true,
     path: '/register',
     component: Register,
-    onAuthRoute: '/temp',
+    onAuthRoute: '/',
   },
   {
     strict: true,
     path: '/login',
     component: Login,
-    onAuthRoute: '/temp',
+    onAuthRoute: '/',
   },
   {
     strict: true,
-    path: '/temp',
+    path: '/',
     component: Home,
-    authPage: '/login',
+    authPage: '/register',
+  },
+  {
+    strict: true,
+    path: "/create",
+    component: AddProduct,
+    authPage: '/register',
+  },
+  {
+    strict: true,
+    path: "/edit/:id",
+    component: EditProduct,
+    authPage: '/register',
   }
 ];

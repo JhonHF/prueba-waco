@@ -5,6 +5,7 @@ export const Home = () => {
   return (
     <>
       <NavBar />
+      este es home
     </>
   );
 };

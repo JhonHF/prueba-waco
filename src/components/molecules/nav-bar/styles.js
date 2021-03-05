@@ -9,7 +9,7 @@ export const NavBarContainer = styled.div`
 `;
 
 export const NavBarLogo = styled.img`
-  max-height: max-content;
+  max-width: 300px;
 `;
 
 export const NavBarItem = styled.div`

@@ -1,73 +1,64 @@
-import React, { useState } from 'react'
-import { Formik } from 'formik'
-import { app, googleAuthProvider } from '../../../firebase-config';
-import { socialLogin } from '../../../helpers/auth-social';
+import React from "react";
+import { Form, Formik, Field } from "formik";
+import { app, googleAuthProvider } from "../../../firebase/firebase-config";
+import { socialLogin } from "../../../helpers/auth-social";
 
 export const LoginForm = () => {
-    const [error, setError] = useState('')
-    const handleSubmit = async(values) => {
-        const { email, password } = values;
+  const handleSubmit = async (values) => {
+    const { email, password } = values;
 
-        await app
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(result => {
-                console.log(result);
-            })
-            .catch(error => {
-                setError(error.message)
-            });
-    }
-    
-    return (
-        <Formik
-        initialValues={{}}
-        validationSchema={{}}
-        onSubmit={handleSubmit}>
-        {({ isValid, submitForm }) => (
-          <>
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="pedro"
-            />
-            <input
-              type="password"
-              name="password"
-              required
-              placeholder="*********"
-            />
-  
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                alignSelf: 'stretch',
-              }}>
-              <button disabled={false} onClick={submitForm}>
-                  'INICIAR SESIÓN'
-              </button>
-            </div>
-           
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-              }}>
-              <button onClick={async() => await socialLogin(googleAuthProvider, setError)}>
-                Inicia Session Con Google
-              </button>
-              
-            </div>
-          </>
-        )}
-      </Formik>
-    )
-}
+    await app
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <Formik initialValues={{}} onSubmit={handleSubmit}>
+      {() => (
+        <Form>
+          <Field type="email" name="email" placeholder="email" />
+          <Field type="password" name="password" placeholder="password" />
+
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              alignSelf: "stretch",
+            }}
+          >
+            <button disabled={false} type="submit">
+              'INICIAR SESIÓN'
+            </button>
+          </div>
+
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              alignSelf: "stretch",
+              flexDirection: "column",
+            }}
+          >
+            <button
+              onClick={async () =>
+                await socialLogin(googleAuthProvider, (err) => console.log(err))
+              }
+            >
+              Inicia Session Con Google
+            </button>
+          </div>
+        </Form>
+      )}
+    </Formik>
+  );
+};
