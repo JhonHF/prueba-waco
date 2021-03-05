@@ -23,7 +23,7 @@ export const Home = () => {
   return (
     <>
       <NavBar />
-      <button >Crear producto</button>
+      <button onClick={()=> history.push("/create")}>Crear producto</button>
       <ListConstainer>
         {listProducts.map((item) => (
           <StyledCard
